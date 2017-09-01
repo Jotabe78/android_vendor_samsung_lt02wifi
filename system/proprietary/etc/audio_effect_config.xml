@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<AudioEffectConfiguration>
+    <AudioEffect name="DRC" device="AUDIO_DEVICE_OUT_SPEAKER" on="true">
+        <Gain offset="65535" threshold="-6553600" compress="1" ratio="72089" />
+        <Gain offset="327680" threshold="-3932160" compress="1" ratio="68812" />
+        <Gain offset="425984" threshold="-1966080" compress="0" ratio="65863" />
+        <Gain offset="419430" threshold="-727449" compress="0" ratio="163840" />
+        <AttackTime>2</AttackTime>
+        <ReleaseTime>400</ReleaseTime>
+    </AudioEffect>
+</AudioEffectConfiguration>

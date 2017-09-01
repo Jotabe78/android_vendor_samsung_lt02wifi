@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PowerHintService>
+    <BootUp level="0" enable="1">
+        <scenario>
+            <boot>boot_up</boot>
+        </scenario>
+        <action>
+            <cpu>
+                <unit id="0" hotplug="online">
+                    <minfreq>100%</minfreq>
+                    <maxfreq>100%</maxfreq>
+                    <governor>ondemand</governor>
+                </unit>
+                <unit id="1" hotplug="online"/>
+                <unit id="2" hotplug="online"/>
+                <unit id="3" hotplug="online"/>
+            </cpu>
+        </action>
+    </BootUp>
+    <BootComplete level="0" enable="1">
+        <scenario>
+            <boot>boot_complete</boot>
+        </scenario>
+        <action>
+            <cpu>
+                <unit id="0" hotplug="online">
+                    <minfreq>0%</minfreq>
+                    <maxfreq>100%</maxfreq>
+                    <governor>ondemand</governor>
+                    <sampling_rate>10000</sampling_rate>
+                </unit>
+                <unit id="1" hotplug="online"/>
+                <unit id="2" hotplug="online"/>
+                <unit id="3" hotplug="online"/>
+            </cpu>
+            <gpu>
+                <unit id="0">
+                    <minfreq>0%</minfreq>
+                    <maxfreq>100%</maxfreq>
+                    <governor>ondemand</governor>
+                </unit>
+                <unit id="1">
+                    <minfreq>0%</minfreq>
+                    <maxfreq>100%</maxfreq>
+                    <governor>ondemand</governor>
+                </unit>
+            </gpu>
+            <ddr>
+                <minfreq>0%</minfreq>
+                <maxfreq>100%</maxfreq>
+                <interval>50</interval>
+            </ddr>
+        </action>
+    </BootComplete>
+    <VideoOff level="0" enable="1">
+        <scenario>
+            <media>
+                <state>off</state>
+            </media>
+        </scenario>
+        <action>
+            <vpu>
+                <unit id="0">
+                    <setspeed>416000</setspeed>
+                </unit>
+            </vpu>
+        </action>
+    </VideoOff>
+    <AudioPlay level="0" enable="1">
+        <scenario>
+            <screen>screen_off</screen>
+        </scenario>
+        <action>
+            <cpu>
+                <unit id="0">
+                    <minfreq>312000</minfreq>
+                    <maxfreq>100%</maxfreq>
+                    <governor>ondemand</governor>
+                </unit>
+            </cpu>
+        </action>
+    </AudioPlay>
+    <Game level="0" enable="1">
+        <scenario>
+            <foreground_task>game</foreground_task>
+        </scenario>
+        <action>
+            <cpu>
+                <unit id="0">
+                    <minfreq>312000</minfreq>
+                    <maxfreq>100%</maxfreq>
+                    <governor>conservative</governor>
+                    <down_threshold>60</down_threshold>
+                    <up_threshold>95</up_threshold>
+                </unit>
+            </cpu>
+        </action>
+    </Game>
+    <Benchmark level="0" enable="1">
+        <scenario>
+            <foreground_task>benchmark</foreground_task>
+        </scenario>
+        <action>
+            <cpu>
+                <unit id="0">
+                    <minfreq>100%</minfreq>
+                    <maxfreq>100%</maxfreq>
+                    <governor>ondemand</governor>
+                </unit>
+            </cpu>
+            <gpu>
+                <unit id="0">
+                    <minfreq>100%</minfreq>
+                    <maxfreq>100%</maxfreq>
+                    <governor>ondemand</governor>
+                </unit>
+                <unit id="1">
+                    <minfreq>100%</minfreq>
+                    <maxfreq>100%</maxfreq>
+                    <governor>ondemand</governor>
+                </unit>
+            </gpu>
+            <ddr>
+                <minfreq>100%</minfreq>
+                <maxfreq>100%</maxfreq>
+            </ddr>
+        </action>
+    </Benchmark>
+    <CallIn level="0" enable="1">
+        <scenario>
+            <phone>offhook</phone>
+        </scenario>
+        <action>
+          <shcmd>
+            <exec>echo enabled > /sys/devices/platform/pxa27x-keypad/power/wakeup</exec>
+          </shcmd>
+        </action>
+    </CallIn>
+    <CallIdle level="0" enable="1">
+        <scenario>
+            <phone>idle</phone>
+        </scenario>
+        <action>
+          <shcmd>
+            <exec>echo disabled > /sys/devices/platform/pxa27x-keypad/power/wakeup</exec>
+          </shcmd>
+        </action>
+    </CallIdle>
+    <CPUOverheat level="0" enable="1">
+        <scenario>
+            <thermal>thsens_cpu>1</thermal>
+        </scenario>
+        <action>
+            <cpu>
+                <unit id="0">
+                    <minfreq>0%</minfreq>
+                    <maxfreq>50%</maxfreq>
+                    <governor>ondemand</governor>
+                </unit>
+            </cpu>
+        </action>
+    </CPUOverheat>
+    <Rotation level="0" enable="1">
+        <scenario>
+            <rotation>enable</rotation>
+        </scenario>
+        <action>
+            <cpu>
+                <unit id="0">
+                    <minfreq>800000</minfreq>
+                    <maxfreq>100%</maxfreq>
+                    <governor>ondemand</governor>
+                </unit>
+            </cpu>
+            <gpu>
+                <unit id="0">
+                    <minfreq>416000</minfreq>
+                    <maxfreq>100%</maxfreq>
+                    <governor>ondemand</governor>
+                </unit>
+                <unit id="1">
+                    <minfreq>312000</minfreq>
+                    <maxfreq>100%</maxfreq>
+                    <governor>ondemand</governor>
+                </unit>
+            </gpu>
+            <ddr>
+                <minfreq>312000</minfreq>
+                <maxfreq>100%</maxfreq>
+            </ddr>
+        </action>
+    </Rotation>
+    <AppLaunch level="0" enable="1">
+        <scenario>
+            <app_launch>enable</app_launch>
+        </scenario>
+        <action>
+            <cpu>
+                <unit id="0">
+                    <minfreq>100%</minfreq>
+                    <maxfreq>100%</maxfreq>
+                    <governor>ondemand</governor>
+                </unit>
+            </cpu>
+            <gpu>
+                <unit id="0">
+                    <minfreq>100%</minfreq>
+                    <maxfreq>100%</maxfreq>
+                    <governor>ondemand</governor>
+                </unit>
+                <unit id="1">
+                    <minfreq>100%</minfreq>
+                    <maxfreq>100%</maxfreq>
+                    <governor>ondemand</governor>
+                </unit>
+            </gpu>
+            <ddr>
+                <minfreq>100%</minfreq>
+                <maxfreq>100%</maxfreq>
+            </ddr>
+        </action>
+    </AppLaunch>
+    <BrowserNormal level="0" enable="1">
+        <scenario>
+            <browser>normal</browser>
+        </scenario>
+        <action>
+            <cpu>
+                <unit id="0">
+                    <minfreq>800000</minfreq>
+                    <maxfreq>100%</maxfreq>
+                    <governor>ondemand</governor>
+                </unit>
+            </cpu>
+            <ddr>
+                <minfreq>312000</minfreq>
+                <maxfreq>100%</maxfreq>
+            </ddr>
+        </action>
+    </BrowserNormal>
+    <BrowserScript level="0" enable="1">
+        <scenario>
+            <browser>script</browser>
+        </scenario>
+        <action>
+            <cpu>
+                <unit id="0">
+                    <minfreq>1066000</minfreq>
+                    <maxfreq>100%</maxfreq>
+                    <governor>ondemand</governor>
+                </unit>
+            </cpu>
+            <ddr>
+                <minfreq>400000</minfreq>
+                <maxfreq>100%</maxfreq>
+            </ddr>
+        </action>
+    </BrowserScript>
+    <BrowserBench level="0" enable="1">
+        <scenario>
+            <browser>bench</browser>
+        </scenario>
+        <action>
+            <cpu>
+                <unit id="0">
+                    <minfreq>100%</minfreq>
+                    <maxfreq>100%</maxfreq>
+                    <governor>ondemand</governor>
+                </unit>
+            </cpu>
+            <gpu>
+                <unit id="0">
+                    <minfreq>100%</minfreq>
+                    <maxfreq>100%</maxfreq>
+                    <governor>ondemand</governor>
+                </unit>
+                <unit id="1">
+                    <minfreq>100%</minfreq>
+                    <maxfreq>100%</maxfreq>
+                    <governor>ondemand</governor>
+                </unit>
+            </gpu>
+            <ddr>
+                <minfreq>100%</minfreq>
+                <maxfreq>100%</maxfreq>
+            </ddr>
+        </action>
+    </BrowserBench>
+</PowerHintService>

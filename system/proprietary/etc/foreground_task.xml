@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PowerPolicyDaemonTaskMonitor>
+  <game>
+    <keyword>angrybirds</keyword>
+    <keyword>krazyracers</keyword>
+  </game>
+  <game2>
+    <keyword>templerun</keyword>
+  </game2>
+  <game3>
+    <keyword>castlemaster</keyword>
+  </game3>
+  <wfdlatency>
+    <keyword>deskclock</keyword>
+  </wfdlatency>
+  <sms>
+    <keyword>com.android.mms</keyword>
+  </sms>
+  <camera>
+    <keyword>com.sec.android.app.camera</keyword>
+  </camera>
+</PowerPolicyDaemonTaskMonitor>

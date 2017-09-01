@@ -1,0 +1,1005 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PowerHintService>
+    <BootUp level="0" enable="1">
+        <scenario>
+            <boot>boot_up</boot>
+        </scenario>
+        <action>
+            <cpu>
+                <unit id="0">
+                    <minfreq>100%</minfreq>
+                    <maxfreq>100%</maxfreq>
+                    <governor>ondemand</governor>
+                </unit>
+            </cpu>
+        </action>
+    </BootUp>
+    <BootComplete level="0" enable="1">
+        <scenario>
+            <boot>boot_complete</boot>
+        </scenario>
+        <action>
+            <cpu>
+                <unit id="0">
+                    <minfreq>0%</minfreq>
+                    <maxfreq>100%</maxfreq>
+                    <governor>ondemand</governor>
+                    <sampling_rate>10000</sampling_rate>
+                </unit>
+            </cpu>
+            <gpu>
+                <unit id="0">
+                    <minfreq>0%</minfreq>
+                    <maxfreq>100%</maxfreq>
+                    <governor>ondemand</governor>
+                </unit>
+            </gpu>
+            <ddr>
+                <minfreq>0%</minfreq>
+                <maxfreq>100%</maxfreq>
+                <interval>50</interval>
+            </ddr>
+        </action>
+    </BootComplete>
+    <VideoOff level="0" enable="1">
+        <scenario>
+            <media>
+                <state>off</state>
+            </media>
+        </scenario>
+        <action>
+            <vpu>
+                <unit id="0">
+                    <setspeed>416000</setspeed>
+                </unit>
+            </vpu>
+        </action>
+    </VideoOff>
+    <AudioPlay level="0" enable="1">
+        <scenario>
+            <screen>screen_off</screen>
+        </scenario>
+        <action>
+            <cpu>
+                <unit id="0">
+                    <minfreq>312000</minfreq>
+                    <maxfreq>100%</maxfreq>
+                    <governor>ondemand</governor>
+                </unit>
+            </cpu>
+        </action>
+    </AudioPlay>
+    <Game level="0" enable="1">
+        <scenario>
+            <foreground_task>game</foreground_task>
+        </scenario>
+        <action>
+            <cpu>
+                <unit id="0">
+                    <minfreq>312000</minfreq>
+                    <maxfreq>100%</maxfreq>
+                    <governor>conservative</governor>
+                    <down_threshold>60</down_threshold>
+                    <up_threshold>95</up_threshold>
+                </unit>
+            </cpu>
+        </action>
+    </Game>
+    <Game2 level="0" enable="1">
+        <scenario>
+            <foreground_task>game2</foreground_task>
+        </scenario>
+        <action>
+            <cpu>
+                <unit id="0">
+                    <minfreq>312000</minfreq>
+                    <maxfreq>100%</maxfreq>
+                    <governor>ondemand</governor>
+                    <sampling_rate>200000</sampling_rate>
+                </unit>
+            </cpu>
+        </action>
+    </Game2>
+    <Game3 level="0" enable="1">
+        <scenario>
+            <foreground_task>game3</foreground_task>
+        </scenario>
+        <action>
+            <cpu>
+                <unit id="0">
+                    <minfreq>312000</minfreq>
+                    <maxfreq>100%</maxfreq>
+                    <governor>conservative</governor>
+                    <down_threshold>86</down_threshold>
+                    <up_threshold>97</up_threshold>
+                    <sampling_rate>200000</sampling_rate>
+                </unit>
+            </cpu>
+            <ddr>
+                    <minfreq>100%</minfreq>
+                    <maxfreq>100%</maxfreq>
+            </ddr>
+            <gpu>
+                <unit id="0">
+                    <minfreq>312000</minfreq>
+                    <maxfreq>100%</maxfreq>
+                    <governor>ondemand</governor>
+                </unit>
+            </gpu>
+        </action>
+    </Game3>
+    <CallIn level="0" enable="1">
+        <scenario>
+            <phone>offhook</phone>
+        </scenario>
+        <action>
+          <shcmd>
+            <exec>echo enabled > /sys/devices/platform/pxa27x-keypad/power/wakeup</exec>
+          </shcmd>
+        </action>
+    </CallIn>
+    <CallIdle level="0" enable="1">
+        <scenario>
+            <phone>idle</phone>
+        </scenario>
+        <action>
+          <shcmd>
+            <exec>echo disable > /sys/devices/platform/pxa27x-keypad/power/wakeup</exec>
+          </shcmd>
+        </action>
+    </CallIdle>
+    <CPUOverheat level="0" enable="1">
+        <scenario>
+            <thermal>pxa988-thermal>1</thermal>
+        </scenario>
+        <action>
+            <cpu>
+                <unit id="0">
+                    <minfreq>0%</minfreq>
+                    <maxfreq>50%</maxfreq>
+                    <governor>ondemand</governor>
+                </unit>
+            </cpu>
+        </action>
+    </CPUOverheat>
+    <Rotation level="0" enable="1">
+        <scenario>
+            <rotation>enable</rotation>
+        </scenario>
+        <action>
+            <cpu>
+                <unit id="0">
+                    <minfreq>800000</minfreq>
+                    <maxfreq>100%</maxfreq>
+                    <governor>ondemand</governor>
+                </unit>
+            </cpu>
+            <gpu>
+                <unit id="0">
+                    <minfreq>416000</minfreq>
+                    <maxfreq>100%</maxfreq>
+                    <governor>ondemand</governor>
+                </unit>
+            </gpu>
+            <ddr>
+                <minfreq>312000</minfreq>
+                <maxfreq>100%</maxfreq>
+            </ddr>
+        </action>
+    </Rotation>
+    <AppLaunch level="0" enable="1">
+        <scenario>
+            <app_launch>enable</app_launch>
+        </scenario>
+        <action>
+            <cpu>
+                <unit id="0">
+                    <minfreq>100%</minfreq>
+                    <maxfreq>100%</maxfreq>
+                    <governor>ondemand</governor>
+                </unit>
+                <unit id="1" hotplug="online"/>
+            </cpu>
+            <gpu>
+                <unit id="0">
+                    <minfreq>100%</minfreq>
+                    <maxfreq>100%</maxfreq>
+                    <governor>ondemand</governor>
+                </unit>
+            </gpu>
+            <ddr>
+                <minfreq>100%</minfreq>
+                <maxfreq>100%</maxfreq>
+            </ddr>
+        </action>
+    </AppLaunch>
+    <BrowserNormal level="0" enable="1">
+        <scenario>
+            <browser>normal</browser>
+        </scenario>
+        <action>
+            <cpu>
+                <unit id="0">
+                    <minfreq>800000</minfreq>
+                    <maxfreq>100%</maxfreq>
+                    <governor>ondemand</governor>
+                </unit>
+            </cpu>
+            <ddr>
+                <minfreq>312000</minfreq>
+                <maxfreq>100%</maxfreq>
+            </ddr>
+        </action>
+    </BrowserNormal>
+    <BrowserScript level="0" enable="1">
+        <scenario>
+            <browser>script</browser>
+        </scenario>
+        <action>
+            <cpu>
+                <unit id="0">
+                    <minfreq>1066000</minfreq>
+                    <maxfreq>100%</maxfreq>
+                    <governor>ondemand</governor>
+                </unit>
+            </cpu>
+            <ddr>
+                <minfreq>400000</minfreq>
+                <maxfreq>100%</maxfreq>
+            </ddr>
+        </action>
+    </BrowserScript>
+    <MultiInstance level="0" enable="1">
+        <scenario>
+            <media>
+                <state>on</state>
+                <multi_instance>enable</multi_instance>
+            </media>
+        </scenario>
+        <action>
+            <vpu>
+                <unit id="0">
+                    <setspeed>416000</setspeed>
+                </unit>
+            </vpu>
+        </action>
+    </MultiInstance>
+
+    <VideoPlayLow level="0" enable="1">
+        <scenario>
+            <media>
+                <state>on</state>
+                <type>decode</type>
+                <resolution>vga</resolution>
+            </media>
+        </scenario>
+        <action>
+            <vpu>
+                <unit id="0">
+                    <setspeed>208000</setspeed>
+                </unit>
+            </vpu>
+        </action>
+    </VideoPlayLow>
+
+    <VideoPlayMid level="0" enable="1">
+        <scenario>
+            <media>
+                <state>on</state>
+                <type>decode</type>
+                <resolution>720p</resolution>
+            </media>
+        </scenario>
+        <action>
+            <vpu>
+                <unit id="0">
+                    <setspeed>208000</setspeed>
+                </unit>
+            </vpu>
+            <gpu>
+                <unit id="0">
+                    <minfreq>312000</minfreq>
+                    <maxfreq>100%</maxfreq>
+                    <governor>ondemand</governor>
+                </unit>
+            </gpu>
+        </action>
+    </VideoPlayMid>
+
+    <VideoPlayHigh level="0" enable="1">
+        <scenario>
+            <media>
+                <state>on</state>
+                <type>decode</type>
+                <resolution>1080p</resolution>
+            </media>
+        </scenario>
+        <action>
+            <vpu>
+                <unit id="0">
+                    <setspeed>208000</setspeed>
+                </unit>
+            </vpu>
+            <gpu>
+                <unit id="0">
+                    <minfreq>312000</minfreq>
+                    <maxfreq>100%</maxfreq>
+                    <governor>ondemand</governor>
+                </unit>
+            </gpu>
+        </action>
+    </VideoPlayHigh>
+
+    <VideoPlayMPG4High level="0" enable="1">
+        <scenario>
+            <media>
+                <state>on</state>
+                <type>decode</type>
+                <resolution>1080p</resolution>
+                <format>MPG4</format>
+            </media>
+        </scenario>
+        <action>
+            <cpu>
+                <unit id="0">
+                    <minfreq>624000</minfreq>
+                    <maxfreq>100%</maxfreq>
+                    <governor>ondemand</governor>
+                </unit>
+            </cpu>
+            <vpu>
+                <unit id="0">
+                    <setspeed>312000</setspeed>
+                </unit>
+            </vpu>
+            <gpu>
+                <unit id="0">
+                    <minfreq>312000</minfreq>
+                    <maxfreq>100%</maxfreq>
+                    <governor>ondemand</governor>
+                </unit>
+            </gpu>
+        </action>
+    </VideoPlayMPG4High>
+
+    <VideoPlayVC1High level="0" enable="1">
+        <scenario>
+            <media>
+                <state>on</state>
+                <type>decode</type>
+                <resolution>1080p</resolution>
+                <format>VC1</format>
+            </media>
+        </scenario>
+        <action>
+            <cpu>
+                <unit id="0">
+                    <minfreq>624000</minfreq>
+                    <maxfreq>100%</maxfreq>
+                    <governor>ondemand</governor>
+                </unit>
+            </cpu>
+            <vpu>
+                <unit id="0">
+                    <setspeed>312000</setspeed>
+                </unit>
+            </vpu>
+            <gpu>
+                <unit id="0">
+                    <minfreq>312000</minfreq>
+                    <maxfreq>100%</maxfreq>
+                    <governor>ondemand</governor>
+                </unit>
+            </gpu>
+        </action>
+    </VideoPlayVC1High>
+
+    <VideoPlayVC1MHigh level="0" enable="1">
+        <scenario>
+            <media>
+                <state>on</state>
+                <type>decode</type>
+                <resolution>1080p</resolution>
+                <format>VC1M</format>
+            </media>
+        </scenario>
+        <action>
+            <cpu>
+                <unit id="0">
+                    <minfreq>624000</minfreq>
+                    <maxfreq>100%</maxfreq>
+                    <governor>ondemand</governor>
+                </unit>
+            </cpu>
+            <vpu>
+                <unit id="0">
+                    <setspeed>312000</setspeed>
+                </unit>
+            </vpu>
+            <gpu>
+                <unit id="0">
+                    <minfreq>312000</minfreq>
+                    <maxfreq>100%</maxfreq>
+                    <governor>ondemand</governor>
+                </unit>
+            </gpu>
+        </action>
+    </VideoPlayVC1MHigh>
+
+    <VideoPlayMPG2High level="0" enable="1">
+        <scenario>
+            <media>
+                <state>on</state>
+                <type>decode</type>
+                <resolution>1080p</resolution>
+                <format>MPG2</format>
+            </media>
+        </scenario>
+        <action>
+            <cpu>
+                <unit id="0">
+                    <minfreq>800000</minfreq>
+                    <maxfreq>100%</maxfreq>
+                    <governor>ondemand</governor>
+                </unit>
+            </cpu>
+            <vpu>
+                <unit id="0">
+                    <setspeed>312000</setspeed>
+                </unit>
+            </vpu>
+            <ddr>
+                <minfreq>100%</minfreq>
+                <maxfreq>100%</maxfreq>
+                <interval>50</interval>
+            </ddr>
+        </action>
+    </VideoPlayMPG2High>
+
+    <CamcorderLow level="0" enable="1">
+        <scenario>
+            <media>
+                <state>on</state>
+                <type>encode</type>
+                <resolution>vga</resolution>
+            </media>
+        </scenario>
+        <action>
+            <cpu>
+                <unit id="0">
+                    <minfreq>312000</minfreq>
+                    <maxfreq>100%</maxfreq>
+                    <governor>ondemand</governor>
+                </unit>
+            </cpu>
+            <ddr>
+                <minfreq>312000</minfreq>
+                <maxfreq>100%</maxfreq>
+                <interval>50</interval>
+            </ddr>
+            <vpu>
+                <unit id="0">
+                    <setspeed>208000</setspeed>
+                </unit>
+            </vpu>
+        </action>
+    </CamcorderLow>
+
+    <CamcorderMid level="0" enable="1">
+        <scenario>
+            <media>
+                <state>on</state>
+                <type>encode</type>
+                <resolution>720p</resolution>
+            </media>
+        </scenario>
+        <action>
+            <cpu>
+                <unit id="0">
+                    <minfreq>312000</minfreq>
+                    <maxfreq>100%</maxfreq>
+                    <governor>ondemand</governor>
+                </unit>
+            </cpu>
+            <ddr>
+                <minfreq>312000</minfreq>
+                <maxfreq>100%</maxfreq>
+                <interval>50</interval>
+            </ddr>
+            <vpu>
+                <unit id="0">
+                    <setspeed>312000</setspeed>
+                </unit>
+            </vpu>
+        </action>
+    </CamcorderMid>
+
+    <CamcorderHigh level="0" enable="1">
+        <scenario>
+            <media>
+                <state>on</state>
+                <type>encode</type>
+                <resolution>1080p</resolution>
+            </media>
+        </scenario>
+        <action>
+            <cpu>
+                <unit id="0">
+                    <minfreq>312000</minfreq>
+                    <maxfreq>100%</maxfreq>
+                    <governor>ondemand</governor>
+                </unit>
+            </cpu>
+            <ddr>
+                <minfreq>312000</minfreq>
+                <maxfreq>100%</maxfreq>
+                <interval>50</interval>
+            </ddr>
+            <vpu>
+                <unit id="0">
+                    <setspeed>416000</setspeed>
+                </unit>
+            </vpu>
+        </action>
+    </CamcorderHigh>
+
+    <VideoStartBoost level="0" enable="1">
+        <scenario>
+            <video_start>enable</video_start>
+        </scenario>
+        <action>
+            <cpu>
+                <unit id="0">
+                    <minfreq>100%</minfreq>
+                    <maxfreq>100%</maxfreq>
+                </unit>
+            </cpu>
+            <ddr>
+                <minfreq>100%</minfreq>
+                <maxfreq>100%</maxfreq>
+            </ddr>
+        </action>
+    </VideoStartBoost>
+
+    <InputEventDefault level="0" enable="1">
+		<scenario>
+			<foreground_task>!sms</foreground_task>
+			<foreground_task>!camera</foreground_task>
+			<foreground_task>!game2</foreground_task>
+            <input>
+                <press_status>pressed</press_status>
+            </input>
+        </scenario>
+        <action>
+            <cpu>
+                <unit id="0" hotplug="online">
+                    <minfreq>100%</minfreq>
+                    <maxfreq>100%</maxfreq>
+                    <governor>ondemand</governor>
+                </unit>
+            </cpu>
+            <gpu>
+                <unit id="0">
+                    <minfreq>100%</minfreq>
+                    <maxfreq>100%</maxfreq>
+                    <governor>ondemand</governor>
+                </unit>
+            </gpu>
+            <ddr>
+                <minfreq>100%</minfreq>
+                <maxfreq>100%</maxfreq>
+            </ddr>
+        </action>
+    </InputEventDefault>
+
+    <InputEventMotion level="0" enable="1">
+        <scenario>
+			<foreground_task>!sms</foreground_task>
+			<foreground_task>!camera</foreground_task>
+			<foreground_task>!game2</foreground_task>
+            <input>
+                <press_status>pressed</press_status>
+                <motion>moving</motion>
+            </input>
+        </scenario>
+        <action>
+            <cpu>
+                <unit id="0" hotplug="online">
+                    <minfreq>100%</minfreq>
+                    <maxfreq>100%</maxfreq>
+                    <governor>ondemand</governor>
+                </unit>
+            </cpu>
+            <gpu>
+                <unit id="0">
+                    <minfreq>100%</minfreq>
+                    <maxfreq>100%</maxfreq>
+                    <governor>ondemand</governor>
+                </unit>
+            </gpu>
+            <ddr>
+                <minfreq>100%</minfreq>
+                <maxfreq>100%</maxfreq>
+            </ddr>
+        </action>
+    </InputEventMotion>
+
+    <CPU_Min_PP1 level="0" enable="1">
+        <scenario>
+            <ssg_booster>
+                <cpu_min>312000</cpu_min>
+            </ssg_booster>
+        </scenario>
+        <action>
+            <cpu>
+                <unit id="0">
+                    <minfreq>312000</minfreq>
+                    <maxfreq>100%</maxfreq>
+                </unit>
+            </cpu>
+        </action>
+    </CPU_Min_PP1>
+    <CPU_Min_PP2 level="0" enable="1">
+        <scenario>
+            <ssg_booster>
+                <cpu_min>624000</cpu_min>
+            </ssg_booster>
+        </scenario>
+        <action>
+            <cpu>
+                <unit id="0">
+                    <minfreq>624000</minfreq>
+                    <maxfreq>100%</maxfreq>
+                </unit>
+            </cpu>
+        </action>
+    </CPU_Min_PP2>
+    <CPU_Min_PP3 level="0" enable="1">
+        <scenario>
+            <ssg_booster>
+                <cpu_min>1066000</cpu_min>
+            </ssg_booster>
+        </scenario>
+        <action>
+            <cpu>
+                <unit id="0">
+                    <minfreq>1066000</minfreq>
+                    <maxfreq>100%</maxfreq>
+                </unit>
+            </cpu>
+        </action>
+    </CPU_Min_PP3>
+    <CPU_Min_PP4 level="0" enable="1">
+        <scenario>
+            <ssg_booster>
+                <cpu_min>1205000</cpu_min>
+            </ssg_booster>
+        </scenario>
+        <action>
+            <cpu>
+                <unit id="0">
+                    <minfreq>100%</minfreq>
+                    <maxfreq>100%</maxfreq>
+                </unit>
+                <unit id="1" hotplug="online"/>
+            </cpu>
+        </action>
+    </CPU_Min_PP4>
+    <CPU_Max_PP1 level="0" enable="1">
+        <scenario>
+            <ssg_booster>
+                <cpu_max>312000</cpu_max>
+            </ssg_booster>
+        </scenario>
+        <action>
+            <cpu>
+                <unit id="0">
+                    <minfreq>0%</minfreq>
+                    <maxfreq>312000</maxfreq>
+                </unit>
+            </cpu>
+        </action>
+    </CPU_Max_PP1>
+    <CPU_Max_PP2 level="0" enable="1">
+        <scenario>
+            <ssg_booster>
+                <cpu_max>624000</cpu_max>
+            </ssg_booster>
+        </scenario>
+        <action>
+            <cpu>
+                <unit id="0">
+                    <minfreq>0%</minfreq>
+                    <maxfreq>624000</maxfreq>
+                </unit>
+            </cpu>
+        </action>
+    </CPU_Max_PP2>
+    <CPU_Max_PP3 level="0" enable="1">
+        <scenario>
+            <ssg_booster>
+                <cpu_max>1066000</cpu_max>
+            </ssg_booster>
+        </scenario>
+        <action>
+            <cpu>
+                <unit id="0">
+                    <minfreq>0%</minfreq>
+                    <maxfreq>1066000</maxfreq>
+                </unit>
+            </cpu>
+        </action>
+    </CPU_Max_PP3>
+    <CPU_Max_PP4 level="0" enable="1">
+        <scenario>
+            <ssg_booster>
+                <cpu_max>1205000</cpu_max>
+            </ssg_booster>
+        </scenario>
+        <action>
+            <cpu>
+                <unit id="0">
+                    <minfreq>0%</minfreq>
+                    <maxfreq>100%</maxfreq>
+                </unit>
+            </cpu>
+        </action>
+    </CPU_Max_PP4>
+
+    <GPU_Min_PP1 level="0" enable="1">
+        <scenario>
+            <ssg_booster>
+                <gpu_min>156000</gpu_min>
+            </ssg_booster>
+        </scenario>
+        <action>
+            <gpu>
+                <unit id="0">
+                    <minfreq>156000</minfreq>
+                    <maxfreq>100%</maxfreq>
+                </unit>
+            </gpu>
+        </action>
+    </GPU_Min_PP1>
+    <GPU_Min_PP2 level="0" enable="1">
+        <scenario>
+            <ssg_booster>
+                <gpu_min>312000</gpu_min>
+            </ssg_booster>
+        </scenario>
+        <action>
+            <gpu>
+                <unit id="0">
+                    <minfreq>312000</minfreq>
+                    <maxfreq>100%</maxfreq>
+                </unit>
+            </gpu>
+        </action>
+    </GPU_Min_PP2>
+    <GPU_Min_PP3 level="0" enable="1">
+        <scenario>
+            <ssg_booster>
+                <gpu_min>416000</gpu_min>
+            </ssg_booster>
+        </scenario>
+        <action>
+            <gpu>
+                <unit id="0">
+                    <minfreq>416000</minfreq>
+                    <maxfreq>100%</maxfreq>
+                </unit>
+            </gpu>
+        </action>
+    </GPU_Min_PP3>
+    <GPU_Min_PP4 level="0" enable="1">
+        <scenario>
+            <ssg_booster>
+                <gpu_min>624000</gpu_min>
+            </ssg_booster>
+        </scenario>
+        <action>
+            <gpu>
+                <unit id="0">
+                    <minfreq>100%</minfreq>
+                    <maxfreq>100%</maxfreq>
+                </unit>
+            </gpu>
+        </action>
+    </GPU_Min_PP4>
+
+    <GPU_Max_PP1 level="0" enable="1">
+        <scenario>
+            <ssg_booster>
+                <gpu_max>156000</gpu_max>
+            </ssg_booster>
+        </scenario>
+        <action>
+            <gpu>
+                <unit id="0">
+                    <minfreq>0%</minfreq>
+                    <maxfreq>156000</maxfreq>
+                </unit>
+            </gpu>
+        </action>
+    </GPU_Max_PP1>
+    <GPU_Max_PP2 level="0" enable="1">
+        <scenario>
+            <ssg_booster>
+                <gpu_max>312000</gpu_max>
+            </ssg_booster>
+        </scenario>
+        <action>
+            <gpu>
+                <unit id="0">
+                    <minfreq>0%</minfreq>
+                    <maxfreq>312000</maxfreq>
+                </unit>
+            </gpu>
+        </action>
+    </GPU_Max_PP2>
+    <GPU_Max_PP3 level="0" enable="1">
+        <scenario>
+            <ssg_booster>
+                <gpu_max>416000</gpu_max>
+            </ssg_booster>
+        </scenario>
+        <action>
+            <gpu>
+                <unit id="0">
+                    <minfreq>0%</minfreq>
+                    <maxfreq>416000</maxfreq>
+                </unit>
+            </gpu>
+        </action>
+    </GPU_Max_PP3>
+    <GPU_Max_PP4 level="0" enable="1">
+        <scenario>
+            <ssg_booster>
+                <gpu_max>624000</gpu_max>
+            </ssg_booster>
+        </scenario>
+        <action>
+            <gpu>
+                <unit id="0">
+                    <minfreq>0%</minfreq>
+                    <maxfreq>100%</maxfreq>
+                </unit>
+            </gpu>
+        </action>
+    </GPU_Max_PP4>
+
+    <DDR_Min_PP1 level="0" enable="1">
+        <scenario>
+            <ssg_booster>
+                <ddr_min>156000</ddr_min>
+            </ssg_booster>
+        </scenario>
+        <action>
+            <ddr>
+                <unit id="0">
+                    <minfreq>156000</minfreq>
+                    <maxfreq>100%</maxfreq>
+                </unit>
+            </ddr>
+        </action>
+    </DDR_Min_PP1>
+    <DDR_Min_PP2 level="0" enable="1">
+        <scenario>
+            <ssg_booster>
+                <ddr_min>312000</ddr_min>
+            </ssg_booster>
+        </scenario>
+        <action>
+            <ddr>
+                <unit id="0">
+                    <minfreq>312000</minfreq>
+                    <maxfreq>100%</maxfreq>
+                </unit>
+            </ddr>
+        </action>
+    </DDR_Min_PP2>
+    <DDR_Min_PP3 level="0" enable="1">
+        <scenario>
+            <ssg_booster>
+                <ddr_min>533000</ddr_min>
+            </ssg_booster>
+        </scenario>
+        <action>
+            <ddr>
+                <unit id="0">
+                    <minfreq>100%</minfreq>
+                    <maxfreq>100%</maxfreq>
+                </unit>
+            </ddr>
+        </action>
+    </DDR_Min_PP3>
+    <DDR_Min_PP3_400 level="0" enable="1">
+        <scenario>
+            <ssg_booster>
+                <ddr_min>400000</ddr_min>
+            </ssg_booster>
+        </scenario>
+        <action>
+            <ddr>
+                <unit id="0">
+                    <minfreq>100%</minfreq>
+                    <maxfreq>100%</maxfreq>
+                </unit>
+            </ddr>
+        </action>
+    </DDR_Min_PP3_400>
+
+    <DDR_Max_PP1 level="0" enable="1">
+        <scenario>
+            <ssg_booster>
+                <ddr_max>156000</ddr_max>
+            </ssg_booster>
+        </scenario>
+        <action>
+            <ddr>
+                <unit id="0">
+                    <minfreq>0%</minfreq>
+                    <maxfreq>156000</maxfreq>
+                </unit>
+            </ddr>
+        </action>
+    </DDR_Max_PP1>
+    <DDR_Max_PP2 level="0" enable="1">
+        <scenario>
+            <ssg_booster>
+                <ddr_max>312000</ddr_max>
+            </ssg_booster>
+        </scenario>
+        <action>
+            <ddr>
+                <unit id="0">
+                    <minfreq>0%</minfreq>
+                    <maxfreq>312000</maxfreq>
+                </unit>
+            </ddr>
+        </action>
+    </DDR_Max_PP2>
+    <DDR_Max_PP3 level="0" enable="1">
+        <scenario>
+            <ssg_booster>
+                <ddr_max>533000</ddr_max>
+            </ssg_booster>
+        </scenario>
+        <action>
+            <ddr>
+                <unit id="0">
+                    <minfreq>0%</minfreq>
+                    <maxfreq>100%</maxfreq>
+                </unit>
+            </ddr>
+        </action>
+    </DDR_Max_PP3>
+    <DDR_Max_PP3_400 level="0" enable="1">
+        <scenario>
+            <ssg_booster>
+                <ddr_max>400000</ddr_max>
+            </ssg_booster>
+        </scenario>
+        <action>
+            <ddr>
+                <unit id="0">
+                    <minfreq>0%</minfreq>
+                    <maxfreq>100%</maxfreq>
+                </unit>
+            </ddr>
+        </action>
+    </DDR_Max_PP3_400>
+    <CPU_BOOST_DUAL level="0" enable="1">
+        <scenario>
+            <ssg_booster>
+                <cpu_hotplug>2</cpu_hotplug>
+            </ssg_booster>
+        </scenario>
+        <action>
+            <cpu>
+                <unit id="1" hotplug="online"/>
+            </cpu>
+        </action>
+    </CPU_BOOST_DUAL>
+</PowerHintService>
+
